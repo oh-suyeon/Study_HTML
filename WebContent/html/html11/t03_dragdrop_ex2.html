@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>drag_drop</title>
+	<style type="text/css">
+		div {
+			width: 100%;
+			height: 300px;
+			border: orange 1px solid;
+		}
+		img {
+			height: 150px;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev, obj) {
+			ev.preventDefault();
+		}
+		function drop(ev, obj){
+			ev.preventDefault();
+			
+			var eleID = ev.dataTransfer.getData("text");
+			var ele1 = document.getElementById(eleID);
+			
+			obj.appendChild(ele1);
+		}
+		function drag(ev) {
+			ev.dataTransfer.setData("text", ev.target.id);
+		}
+	</script>
+</head>
+<body>
+	<h3>원하는 물건을 끌어서 옮기세요.</h3>
+	<div id="dropPlace1" ondragover="allowDrop(event, this);" ondrop="drop(event, this);"></div>
+	<div id="dropPlace2" ondragover="allowDrop(event, this);" ondrop="drop(event, this);"></div>
+	<img id="drag1" draggable="true" ondragstart="drag(event);" alt="컴퓨터" src="../../images/computer.jpg">
+	<img id="drag2" draggable="true" ondragstart="drag(event);" alt="커피" src="../../images/coffee1.jpg">
+	<img id="drag3" draggable="true" ondragstart="drag(event);" alt="사과" src="../../images/food.jpg">
+</body>
+</html>

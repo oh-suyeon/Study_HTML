@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>float clear</title>
+	<style type="text/css">
+		#header {
+			background-color: yellow;
+			border-radius: 10px;
+			height: 50px;
+		}
+		#nav {
+			background-color: LightCoral;
+			border-radius: 10px;
+			width: 20%;
+			height: 200px;
+			float: left;
+		}
+		#content {
+			background-color: LightBlue;
+			border-radius: 10px;
+			width: 80%;
+			height: 200px;
+			float: right;
+		}
+		#footer {
+			background-color: MediumSeaGreen;
+			border-radius: 10px;
+			height: 50px;
+			clear: both;
+		}
+		
+	</style>	
+	
+</head>
+<body>
+	<div id="base">
+		<div id="header">header
+		</div>
+		<div id="nav">nav
+		</div>
+		<div id="content">content
+		</div>
+		<div id="footer">footer
+		</div>
+	</div>
+</body>
+</html>

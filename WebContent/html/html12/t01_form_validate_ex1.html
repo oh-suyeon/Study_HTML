@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>form validate</title>
+	
+	<script src="../../js/common/myUtils.js"></script>
+	
+	<script type="text/javascript">	// 사용자가 편하게 검사하려면 항목별로 검사를 진행하기 
+		function save() {
+			//1. 유효성 검사
+			if(!validate()){
+				return;
+			}
+			//2. 유효성 검사 성공  시 사용자 컨펌 - 서버로 전송	~~ 검사 다 하고나서 서버 전송작업하기. 
+			if(!confirm("저장하시겠습니까?")){ // 오동작 줄이기 위해 메시지 주기. 실제 DB에 반영이될테니까
+				return;
+			}
+			//서버 전송 로직
+			// .... 
+			alert("저장되었습니다");
+
+			
+			function validate() {
+				// 사용자 ID 체크
+				var userId = document.getElementById("userId").value;
+				// 빈값 체크
+				if(isEmpty(userId)){
+					alert("아이디는 필수입력 항목입니다.");
+					document.getElementById("userId").focus();
+					return false;
+				}
+				// 길이 체크 (5~15자)
+				if( !checkLength("userId", "아이디", 5, 15) ){
+					return false;
+				}
+//	 			if(userId.length < 5 || userId.length > 15){
+//	 				alert("ID는 5자 이상, 15자 이하입니다.");
+//	 				document.getElementById("userId").focus();
+//	 				return;
+//	 			}
+				
+				var userName = document.getElementById("userName").value;
+				if(isEmpty(userName)){
+					alert("이름은 필수입력 항목입니다.");
+					document.getElementById("userName").focus();
+					return false; 
+				}
+
+//	 			var objBirth = document.getElementById("birth");
+//	 			if(!checkValue(objBirth, "생년월일")){
+//	 				return;
+//	 			}
+
+				if( !checkValue("birth", "생년월일") ){
+					return false;
+				}
+
+				if( !checkValue("hp", "핸드폰번호") ){
+					return false;
+				}
+
+				if( !checkValue("email", "이메일") ){
+					return false;
+				}
+				return true;
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<h1>회원 정보</h1>
+	<p>*은 필수 입력 항목입니다.</p>
+	<form action="">
+		*ID(5~15자) : <input type="text" id="userId"> <br>
+		*이름(2~10자) : <input type="text" id="userName" > <br>
+		*생년월일 : <input type="text" id="birth"> <br>
+		*핸드폰 번호 : <input type="text" id="hp"> <br>
+		*이메일 : <input type="text" id="email"> <br>
+		주소 : <input type="text" id="addr"> <br><br>
+		<button type="button" onclick="save();">저 장</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>function</title>
+	<script type="text/javascript">
+		function calculate(a, b) {
+			return a + b;
+		}
+		
+		// 화면이 로딩되면서 calculate 호출
+		window.onload = function() {
+			document.getElementById("tmp").innerHTML = calculate(10, 20);
+			console.log(document.getElementById("tmp").innerHTML);
+		}
+	</script>
+</head>
+<body>
+	<p id="tmp"></p>
+</body>
+</html>

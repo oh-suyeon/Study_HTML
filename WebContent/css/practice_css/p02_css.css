@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+body {
+	font-family: serif;
+	font-size: 1.5em;
+}
+
+body h1 {
+	color: blue;
+} 
+
+h1 > span {
+	color: red;
+}
+
+fieldset {
+	border: lightblue 3px dotted;
+	width: 250px;
+	padding: 20px;
+	
+}
+
+a:link {
+	color: Chocolate;
+	text-decoration: none;
+	background-color: cornsilk;
+}
+
+a:hover {
+	color: Coral;
+	text-decoration: underline;
+	background-color: FloralWhite;
+}
+
+a:visited {
+	color: fireBrick;
+	background-color: gainsboro;
+}
+
+a:active {
+	color: ivory;
+	background-color: indigo;
+}
+
+#title {
+	text-align: center;
+	text-shadow: silver;
+	font: bold;
+	font-size: 2em;
+}
+
+#poet {
+	text-align: right;
+}
+
+fieldset:nth-last-child(1) {
+	width: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

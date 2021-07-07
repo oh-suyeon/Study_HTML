@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Bom</title>
+	<script type="text/javascript">
+		var pop = "";
+		var war = "";
+		var col = "";
+		function openPopup() {
+			pop = window.open("https://www.google.com", "_blank", "width=200,height=200");
+		}
+		function closePopup() {
+			pop.close();
+		}
+		function warning() {
+			war = setTimeout(function() {
+					alert("경고!");
+				  }, 3000);
+		}
+		function stopwarning() {
+			clearTimeout(war);
+		}
+		function coloring() {
+			col = setInterval(colors, 1000);
+		}
+		
+		function colors() {
+			var r = parseInt(Math.random() * 256);
+			var g = parseInt(Math.random() * 256);
+			var b = parseInt(Math.random() * 256);
+			
+			var strColor = "rgb(" + r + ", " + g + ", " + b + ")";
+			
+			document.getElementsByTagName("p")[1].style.backgroundColor = strColor;
+		}
+		function stopColoring() {
+			clearInterval(col);
+		}
+	</script>
+</head>
+<body>
+	<button type="button" onclick="openPopup();">구글 창 열기</button>
+	<button type="button" onclick="closePopup();">구글 창 닫기</button>
+	
+	<hr>
+	
+	<p>버튼 누르면 3초 후 경고 박스</p>
+	<button type="button" onclick="warning();">경고</button>
+	<button type="button" onclick="stopwarning();">멈춰</button>
+	
+	<hr>
+	
+	<p>현재시간</p>
+	<button type="button" onclick="coloring();">색칠</button>
+	<button type="button" onclick="stopColoring();">그만</button>
+	
+</body>
+</html>

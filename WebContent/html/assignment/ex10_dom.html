@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>DOM 스위치 토글 화면</title>
+	
+	<style type="text/css">
+		a:hover {
+			cursor: pointer;
+		}
+	</style>
+	
+</head>
+
+<body>
+
+	<a onclick="changeImg()"><img alt="스위치" src="sw_off.png"></a>
+	
+</body>
+
+	<script type="text/javascript">
+		
+		var nowImg = document.getElementsByTagName("img")[0].src;  // 전역변수여야 함
+		
+		function changeImg() {
+			
+			if(nowImg.length > 11){
+				nowImg = nowImg.substr(-10); // 파일 절대 경로를 가져오는 첫번째 실행. --> 파일명 부분만 자르기
+			}
+		
+			var images = ["sw_off.png", "sw_on.png"];
+			
+			console.log(">>" + nowImg);
+			console.log(">>*" + images.indexOf(nowImg));
+			
+			if(images.indexOf(nowImg)){
+				nowImg = images[0];
+			} else {
+				nowImg = images[1];
+			} 
+			
+			console.log(">>>>>>" + nowImg);
+			console.log(">>>>>>*" + images.indexOf(nowImg));
+			
+			document.getElementsByTagName("img")[0].src = nowImg;
+			
+		}	
+	</script>
+	
+</html>

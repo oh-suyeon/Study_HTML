@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var arr1 = ["사과", "배", "포도", "배"];
+		
+		//메서드 1. indexOf()
+		var idx1 = arr1.indexOf("배"); // 1
+		var idx2 = arr1.indexOf("망고"); // -1
+		var idx3 = arr1.lastIndexOf("배"); // 3
+		
+		console.log(idx1);
+		console.log(idx2);
+		console.log(idx3);
+		
+		var pop = arr1.pop(); // 마지막 요소 리턴
+		console.log(pop);		
+		
+		var shi = arr1.shift(); // 마지막 요소 리턴
+		console.log(shi);		
+		
+		var unshi = arr1.unshift("수박");
+		console.log(unshi);
+		
+		document.write("원본 : " + arr1 + "<br>")
+		
+		// 제일 뒤에 요소 추가
+		arr1.push("수박");
+		document.write("push : " + arr1 + "<br>");
+		
+		// 마지막 요소 반환
+		document.write("pop : " + arr1.pop() + "<br>");
+		document.write("pop : " + arr1 + "<br>");
+
+		//첫번째 요소 반환
+		document.write("shift : " + arr1.shift() + "<br>");
+		document.write("shift : " + arr1 + "<br>");
+		
+		// 제일 앞에 요소 추가 (한 칸 미뤄준다)
+		arr1.unshift("감");
+		document.write("unshift : " + arr1 + "<br>")
+		
+		// 거꾸로
+		arr1.reverse();
+		document.write("reverse : " + arr1 + "<br>")
+		
+		// 소트(오름차순)
+		document.write("sort : " + arr1.sort() + "<br>")
+		
+		// 소트 예제
+		var arr2 = [10, 7, 23, 5, 100, 54150, 20, 0, 1];
+		document.write("원본 : " + arr2 + "<br>");
+		document.write("sort : " + arr2.sort() + "<br>");
+
+		document.write (arr2.sort(function(a, b) {
+			return b - a;
+		}));
+		
+		
+		
+		
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

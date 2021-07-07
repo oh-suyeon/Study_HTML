@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JS Operator</title>
+	<style type="text/css">
+		div {
+			border: solid 1px;
+			height: 100px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="temp"></div>
+</body>
+	<script type="text/javascript">
+		var x, y;
+		var input;
+		input = prompt("정수 입력", "정수")
+		x = parseInt(input);
+		input = prompt("정수 입력", "정수")
+		y = parseInt(input);
+		
+		document.getElementById("temp").innerHTML = "결과는 " + (x + y) + "입니다."
+	</script>
+</html>

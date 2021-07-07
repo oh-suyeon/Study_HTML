@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BOM</title>
+	<script type="text/javascript">
+		var pop = "";
+		
+		function openPopup() {
+			pop = window.open("https://www.naver.com/", "_blank", "width=500,height=500");	
+			//open("https://www.naver.com/", "naver!", "width=500,height=500");	
+		}
+		
+		function closePopup() {
+			pop.close();
+		}
+		////////////////////////
+		function showMsg() {
+			setTimeout(function() {
+				alert("안뇽");
+			}, 3000);
+			
+			setTimeout(alertMsg, 5000);
+		}
+		
+		function alertMsg(){
+			alert("하이");
+		}
+		/////////////////////////
+		
+		var idIntval = ""; 
+		function changeBgColor() {
+// 			setInterval(function(){
+// 				//글자내용변경
+// 			}, 2000);
+			
+			idIntval = setInterval(changeBgColor1, 2000);
+		}
+		
+// 		var arr = ["red", "yellow", "blue", "green", "silver"];
+		function changeBgColor1() {
+// 			document.getElementById("temp").style.backgroundColor = arr[parseInt(Math.random() * 4)]; // backgroundColor <= background-color
+			var r = parseInt(Math.random() * 256);
+			var g = parseInt(Math.random() * 256);
+			var b = parseInt(Math.random() * 256);
+			document.getElementById("temp").style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")"; 
+		}
+		
+		function stopBgColor() {
+			clearInterval(idIntval);
+		}
+	</script>
+</head>
+<body>
+	<button type="button" onclick="openPopup()">새 창 열기</button>
+	<button type="button" onclick="closePopup()">창 닫기</button>
+	
+	<hr>
+	
+	<p id ="temp">버튼을 클릭하면 3초 후 메시지 나온다.</p>
+	<button type="button" onclick="showMsg()">클릭</button>
+	<button type="button" onclick="changeBgColor()">색변경</button>
+	<button type="button" onclick="stopBgColor()">색변경 중지</button>
+</body>
+</html>

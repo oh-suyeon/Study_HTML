@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Create and Remove</title>
+	
+	<script type="text/javascript">
+	
+		var objToRemove = "";
+		
+		// 리스트 이미지
+		function showImg(obj) {
+			// 지우기 
+			if(objToRemove != ""){
+				
+				if(objToRemove.firstChild.data == obj.firstChild.data){
+					objToRemove.removeChild(objToRemove.lastChild);
+					objToRemove = "";
+					return;
+				}
+				objToRemove.removeChild(objToRemove.lastChild);
+			} 
+			////**** 또는 이미지를 생성하기 전에 li에 있는 이미지 모두 지우기 - remove, removeChild
+
+// 			var items = document.getElementById("imgList").getElementsByTagName("li");
+// 			var items = obj.parentElement.getElementsByTagName("li");
+			
+// 			for(var i=0; i<items.length; i++){
+// 				var imgs = items[i].getElementsByTagName("img");
+				
+// 				for(var j=0; j<imgs.length; j++){
+// 					imgs[j].remove();
+// 				}
+// 			}
+			
+			// 생성하기
+			var objTitle = obj.title;
+			var objTxt = obj.firstChild.data;
+			
+			var imgNode = document.createElement("img");
+			imgNode.src = "../../images/" + objTitle;
+			imgNode.alt = objTxt;
+			imgNode.className = "circle"; // 클래스 이름 설정
+			imgNode.style.width = "50px";
+			obj.appendChild(imgNode);
+			
+			objToRemove = obj;
+		}
+		
+		// 가위바위보
+		function game() {
+			var objHand = {
+					  ga : "가위"
+					,ba : "바위"
+					,bo : "보"
+			}
+			
+			var objKeyArr = Object.keys(objHand);
+			var objValArr = Object.values(objHand);
+			
+			var manHand = prompt("가위 바위 보를 입력하세요");
+			var manHInx = objValArr.indexOf(manHand);
+			
+			if(manHInx < 0){
+				alert("[ " + manHand + " ] 올바르지 않은 입력입니다.");
+				return;
+			}
+			
+			var comHInx = parseInt(Math.random() * 3);
+			var comHand = objValArr[comHInx];
+			
+			// 0 - 2, 1 - 0, 2 - 1
+			// 0 - 1, 1 - 2, 2 - 0
+			var result = "";
+			if(manHInx == comHInx){
+				result = "비겼습니다.";
+			} else if (manHInx > comHInx) {
+				result = "당신이 이겼습니다!"; 	
+
+				if(manHInx == 2 && comHInx == 0){
+					result = "당신이 졌습니다!";
+				}
+			} else {
+				result = "당신이 졌습니다!"; 	
+
+				if(manHInx == 0 && comHInx == 2){
+					result = "당신이 이겼습니다!"; 
+				}
+			}
+
+			document.getElementById("result").firstChild.data = result;
+			
+			var imgRoot = "../../images/";
+			var manHImg = document.getElementsByTagName("img")[0];
+			manHImg.src = imgRoot + objKeyArr[manHInx] + "_left.png";
+			manHImg.alt = "사람의" + manHand;
+			
+			var comHImg = document.getElementsByTagName("img")[1];
+			comHImg.src = imgRoot + objKeyArr[comHInx] + "_right.png";
+			comHImg.alt = "컴퓨터의" + comHand;
+			
+		}
+	</script>
+	<style type="text/css">
+		img.circle {
+			width: 50px;
+			height: 40px;
+			border-radius: 70%;
+			border: skyblue 2px solid;
+		}
+		div:last-child {
+			text-align: center;
+		}
+		table, table img {
+			width: 100%;
+		}
+		table th:first-child {
+			background-color: lightYellow;
+		}
+		table th:last-child {
+			background-color: lightSalmon;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h2>이미지를 보려면 리스트를 클릭하세요.</h2>
+		<ul id="imgList">
+			<li title="computer.jpg" onclick="showImg(this);">컴퓨터1</li>
+			<li title="food.jpg" onclick="showImg(this);">식품2</li>
+			<li title="tiger.jpg" onclick="showImg(this);">호랑이</li>
+			<li title="cloud.jpg" onclick="showImg(this);">cloud03</li>
+			<li title="coffee1.jpg" onclick="showImg(this);">coffee1</li>
+		</ul>
+	</div>
+	
+	<hr>
+	
+	<div>
+		<button type="button" onclick="game();">게임시작</button>
+		<table>
+			<tr>
+				<th>사람</th>
+				<th>컴퓨터</th>
+			</tr>
+			<tr>
+				<td><img alt="사람의바위" src="../../images/ba_left.png"></td>
+				<td><img alt="컴퓨터의바위" src="../../images/ba_right.png"></td>
+			</tr>
+		</table>
+		<div id="result"> </div>
+	</div>
+</body>
+</html>

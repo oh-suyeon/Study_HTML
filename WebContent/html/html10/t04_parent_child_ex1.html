@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM 트리 순회</title>
+</head>
+<body>
+	<h1> 
+		메뉴
+	</h1>
+	<p>
+		오늘도 저희 매장을 찾아주셔서 감사합니다.
+	</p>
+	<ul>
+		<li id="temp1">커피
+			<ul>
+				<li>아메리카노</li>
+				<li>카페라떼</li>
+				<li>카푸치노</li>
+			</ul>
+		</li>
+		<li>No커피
+			<ul>
+				<li>레모네이드</li>
+				<li>콜라</li>
+			</ul>
+		</li>
+	</ul>
+	<button type="button" onclick="proc()">실행</button>
+	<div id="result">
+<!-- 		레모네이드, 콜라  -->
+	</div>
+	<script type="text/javascript">
+
+		function proc() {
+			var list = document.getElementsByTagName("ul")[0];
+			var noCoffeeList = list.getElementsByTagName("ul")[1];
+			var arrItem = noCoffeeList.getElementsByTagName("li");
+			var strHtml = "";
+			
+			for(var i = 0; i < arrItem.length; i++){
+				arrItem[i];
+				console.log(arrItem[i]);
+				console.log("====================");
+				console.log("value : " + arrItem[i].value); //X
+				console.log(arrItem[i].value); //X
+				console.log("innerHTMl : " + arrItem[i].innerHTML); //O
+				console.log(arrItem[i].innerHTML); //O
+				console.log("children : " + arrItem[i].children); // 하위 요소 리턴 ==> li 태그 안에는요소가 없다 ==>  X
+				console.log(arrItem[i].children); // 하위 요소 리턴 ==> li 태그 안에는요소가 없다 ==>  X
+				console.log("childNodes : " + arrItem[i].childNodes); // 하위 노드 리턴 ==> text "레모네이드" 가져올 수 있음 ==> O 
+				console.log(arrItem[i].childNodes); // 하위 노드 목록 리턴 ==> text "레모네이드" 가져올 수 있음 ==> O 
+				console.log(arrItem[i].childNodes[0]); // 오브젝트 객체를 리턴한다.
+				
+				// 텍스트 노드에서 텍스트 가져오기
+				console.log(arrItem[i].childNodes[0].data); // text 가져오기1 --> 덱스트를 가져오기에 가장 적합함.
+				console.log(arrItem[i].childNodes[0].nodeValue); // text 가져오기2 --> 텍스트 외의 속성 등 다른 값들도 포함하고 있다. data와 결과는 같음. 
+				console.log(arrItem[i].childNodes[0].textContent); // text 가져오기3 --> 하위 노드들의 텍스트도 다 가져오기 때문에 적합하지 않음.
+
+// 				strHtml += arrItem[i].childNodes[0] + ", ";
+				strHtml += arrItem[i].childNodes[0].data + ", ";
+
+			}
+			document.getElementById("result").innerHTML = strHtml.substr(0, strHtml.length - 2);		
+		}
+	
+	</script>
+</body>
+</html>

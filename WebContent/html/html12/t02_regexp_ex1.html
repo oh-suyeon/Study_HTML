@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>정규식</title>
+	<script type="text/javascript">
+		function validate1() {
+			var tel = document.getElementById("tel").value;
+			var regExp = /^\d{3}-\d{4}-\d{4}$/;
+			if(tel.match(regExp)){
+				alert("유효한 데이터입니다.");
+				console.log(tel.match(regExp));
+			} else {
+				alert("유효하지 않은 데이터입니다.");
+				document.getElementById("tel").focus();
+			}
+		}
+		function validate2() {
+			var email = document.getElementById("email").value;
+			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+			if(email.match(regExp)){
+				alert("유효한 데이터입니다.");
+			} else {
+				alert("유효하지 않은 데이터입니다.");
+				document.getElementById("email").focus();
+			}
+		}
+	</script>
+</head>
+<body>
+	전화번호 : <input type="text" id="tel">
+	<button type="button" onclick="validate1()">검 증</button>
+	이메일 : <input type="text" id="email">
+	<button type="button" onclick="validate2()">검 증</button>
+	
+	
+</body>
+</html>

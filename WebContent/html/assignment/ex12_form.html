@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Form</title>
+	<style type="text/css">
+		div#ex1, div#ex4 {
+			text-align: center;
+		}
+		div#ex2 div {
+			width: 100%;
+			height: 150px;
+			border: solid 1px silver;
+			overflow: auto;
+		}
+		div#ex3 {
+			text-align: center;
+		}
+		div#ex3 select {
+			width: 40%;
+			height: 150px;
+			overflow: auto;
+		}
+		div#ex3 select#leftS {
+			float: left;
+			margin-bottom: 10px;
+		}
+		div#ex3 select#rightS {
+			float: right;
+		}		
+		div#ex3 div#buttons {
+			line-height: 4.5vh;
+		}
+		div#ex3 input {
+			clear: both;
+		}
+		div#ex4 div {
+			width : 120px;
+			height: 200px;
+			border: solid 1px silver;
+			display: inline-block;
+			margin-top: 10px; 
+		}
+	</style>
+</head>
+<body>
+	<div id="ex1">
+		<form id="form1">
+			<input id="input1" type="text" size="1"> 
+			<span>단</span>
+			<button type="button" onclick="gugu();">출력</button>
+			<br><br>
+			<textarea rows="13" cols="15"></textarea>
+		</form>
+	</div>
+	
+	<hr>
+	
+	<div id="ex2">
+		<form id="form2">
+			<span>이 름 : </span>
+			<input type="text" name="input1" required>
+			<br>
+			<span>성  별 : </span>
+			<input type="radio" name="gender" id="MaleG" checked> 	<label for="MaleG">남자</label> 
+			<input type="radio" name="gender" id="FmaleG" > 		<label for="FmaleG">여자</label> 
+			<br>
+			<span>취  미 : </span>
+			<input type="checkbox" id="hobby1" name="hobby"> 		<label for="hobby1">여행</label> 
+			<input type="checkbox" id="hobby2" name="hobby"> 		<label for="hobby2">독서</label> 
+			<input type="checkbox" id="hobby3" name="hobby"> 		<label for="hobby3">영화감상</label> 
+			<input type="checkbox" id="hobby4" name="hobby"> 		<label for="hobby4">바둑</label> 
+			<input type="checkbox" id="hobby5" name="hobby">		<label for="hobby5">장기</label> 
+			<input type="checkbox" id="hobby6" name="hobby"> 		<label for="hobby6">등산</label> 
+			<input type="checkbox" id="hobby7" name="hobby"> 		<label for="hobby7">낚시</label>
+			<br>
+			<button type="button" onclick="print();">결과출력</button> 
+		</form>
+		<br>
+		<div></div>
+	</div>
+	
+	<hr>
+	
+	<div id="ex3">
+		<h2>select 객체 예제</h2>
+		<select multiple="multiple" size="10" id="leftS"></select>
+		<select multiple="multiple" size="10" id="rightS"></select>
+		<div id="buttons">
+			<button type="button" onclick="moveOpt(1, 1, 2)">&#62;</button> 
+			<br>
+			<button type="button" onclick="moveOpt(2, 1, 2)">&#62;&#62;</button> 
+			<br>
+			<button type="button" onclick="moveOpt(1, 2, 1)">&#60;</button> 
+			<br>
+			<button type="button" onclick="moveOpt(2, 2, 1)">&#60;&#60;</button>
+		</div>
+		<br>
+		<input type="text" id="inputNum">
+		<button type="button" onclick="moveOpt(0, 1, 1)">추가</button>
+		<button type="button" onclick="reset()">초기화</button>
+	</div>
+	
+	<hr>
+	
+	<div id="ex4">
+		<select>
+			<option value="0">=선택=</option>
+			<option value="2">2단</option>
+			<option value="3">3단</option>
+			<option value="4">4단</option>
+			<option value="5">5단</option>
+			<option value="6">6단</option>
+			<option value="7">7단</option>
+			<option value="8">8단</option>
+			<option value="9">9단</option>
+		</select>
+		<button type="button" onclick="selGugu()">출  력</button>
+		<br>
+		<div> </div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+
+	function gugu() {
+		var num = document.getElementById("input1").value;
+		
+		var result = num + "단\n\n";
+		for(var i=0; i<9; i++){
+			result += num + " * " + (i + 1) + " = " + (num * (i + 1)) + "\n";
+		}
+		document.getElementsByTagName("textarea")[0].value = result;
+	}
+	
+	
+	function print() {		
+		// 고칠 점 ) 나는 배열에 차례대로 담아서 인덱스로 불러왔지만 name, hobby 등의 변수에 하나씩 담아서 변수명으로 불러오는게 더 정확하다.
+		var form = document.body.children[2].firstElementChild;
+		
+		var inputArr = form.getElementsByTagName("input");
+		var labelArr = form.getElementsByTagName("label");
+		
+		// 라벨로 value값 가져오기 (label은 각 input의 sibling으로 찾을 수도 있다.)
+		var valueArr = [];
+		for(var i=0; i<labelArr.length; i++){
+			valueArr[i] = labelArr[i].firstChild.data;
+		}
+		
+		// 입력 값이 있는 input의 value만 모으기
+		var chosenArr = [inputArr[0].value];
+		for(var i=0; i<inputArr.length; i++){
+			if(inputArr[i].checked){ // 1인덱스부터 체크가 안 되어 있으면 통과. 
+			chosenArr.push(valueArr[i - 1]);  // valueArr에는 이름 값이 들어있지 않아 인덱스 번호가 한 칸 당겨진다.
+			}
+		}
+		
+		// 출력하기
+		var hobby = "";
+		for(var i=2; i<chosenArr.length; i++){
+			
+			if(chosenArr.length < 3){
+				hobby = "취미가 없군요!";
+				break;
+			}
+			if(i == chosenArr.length - 1){
+				hobby = "취미가 " + hobby + chosenArr[i] + "이군요!"; 
+				break;
+			}
+			hobby += chosenArr[i] + ", ";
+		}
+		
+		var result = chosenArr[0] + "씨! <br>당신은 " + chosenArr[1] + "이고, <br>" + hobby;
+		document.body.children[2].lastElementChild.innerHTML = result; 
+		
+		form.reset();
+	}
+	
+	function moveOpt(n, a, b) {	
+		var div = document.getElementById("ex3");
+		var selOps = div.children[a].options;
+		
+		if(n==0){ // +
+			var optNode = document.createElement("option");
+			var input = div.children[5].value.trim();
+			
+			var leftVals = div.children[1].children;
+			var rightVals = div.children[2].children;
+			
+			var flag1 = multipleCheck(leftVals, div.children[5], input); 
+			var flag2 = multipleCheck(rightVals, div.children[5], input);
+			
+			if(flag1 == false || flag2 == false || input==""){
+				alert("이미 추가한 숫자 또는 빈 값은 입력할 수 없습니다.");
+				div.children[5].focus();
+				return;
+			}
+			
+			optNode.value = input;
+			optNode.innerHTML = input;
+			
+			div.children[1].appendChild(optNode);
+			
+			div.children[5].value = "";
+			div.children[5].focus();
+			
+		} else if(n==1){ // >
+			var selIdx = []; 
+			
+			for(var i=0; i<selOps.length; i++){
+				if(selOps[i].selected){
+					var optNode = document.createElement("option");
+					optNode.value = selOps[i].value;
+					optNode.innerHTML = selOps[i].innerHTML;
+					div.children[b].appendChild(optNode);
+					selIdx.push(i);	
+				}
+			}
+			
+			for(var i=selIdx.length-1; i>=0; i--){
+				var idx = selIdx[i];
+				var opt = div.children[a].getElementsByTagName("option")[idx];
+				div.children[a].removeChild(opt);
+			}
+			
+		} else { // >>
+			for(var i=0; i<selOps.length; i++){
+				var optNode = document.createElement("option");
+				optNode.value = selOps[i].value;
+				optNode.innerHTML = selOps[i].innerHTML;
+				div.children[b].appendChild(optNode);
+			}
+			for(var i=selOps.length-1; i>=0; i--){
+				var opt = div.children[a].getElementsByTagName("option")[i];
+				div.children[a].removeChild(opt);
+			}
+		}
+		
+		sortObj(div.children[a]);
+		sortObj(div.children[b]);
+	}
+	
+	function multipleCheck(obj1, obj2, input) {
+		var div = document.getElementById("ex3");
+		var flag = true;
+		
+		for(var i=0; i<obj1.length; i++){
+			if(obj1[i].firstChild.data == input){
+				obj2.value = "";
+				obj2.focus();
+				flag = false;
+			}
+		}
+		return flag;
+	}
+	
+	function reset() {
+		var div = document.getElementById("ex3");
+		var leftVals = div.children[1].children;
+		var rightVals = div.children[2].children;
+		
+		for(var i=leftVals.length-1; i>=0; i--){
+			leftVals[i].remove();
+		}
+		for(var i=rightVals.length-1; i>=0; i--){
+			rightVals[i].remove();
+		}
+		div.children[5].focus();
+	}
+	
+	function sortObj(obj) {
+		var arr = [];
+		for(var i=0; i < obj.length; i++){
+			arr[i] = obj[i].value;
+		}
+		
+		arr.sort(function(f, s) {
+			return f - s;
+		});
+		
+		for(var i=0; i < obj.length; i++){
+			
+			for(var j=0; j < obj.length; j++)
+				if(arr[i] == obj[j].value){
+					var tmp1 = obj[i].value;
+					var tmp2 = obj[i].innerHTML;
+					obj[i].value = obj[j].value;
+					obj[i].innerHTML = obj[j].innerHTML;
+					obj[j].value = tmp1;
+					obj[j].innerHTML = tmp2;
+				}
+		}
+		return obj;
+	}
+	
+	function selGugu() {
+		var div = document.getElementById("ex4");
+		var selOpt = div.firstElementChild.options;		
+		var selNum = 0;
+		
+		for(opt of selOpt){
+			if(opt.selected){
+				selNum = opt.value;
+				break;
+			}
+		}
+		
+		if(selNum == 0){
+			return;
+		}
+			
+		var result = "";
+		for(var i=0; i<9; i++){
+			result += selNum + " * " + (i + 1) + " = " + (selNum * (i + 1)) + "<br>";
+		}
+		
+		div.lastElementChild.innerHTML = result;
+	}
+	
+	
+</script>
+</html>

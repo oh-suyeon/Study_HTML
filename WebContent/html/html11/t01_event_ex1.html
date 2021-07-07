@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>event</title>
+	<style type="text/css">
+		div {
+			border: 5px dotted lightsalmon;
+			line-height: 50px;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		function init() {
+			document.getElementById("btn2").onclick = proc2;
+			
+			document.getElementById("btn3").addEventListener("click", proc3);
+		}
+		function proc1() {
+			alert(1);
+		}
+		
+		function proc2() {
+			alert(2);
+		}
+		
+		function proc3() {
+			alert(3);
+		}
+		
+		function changeBgColor(strColor) {
+// 			document.body.style.backgroundColor = strColor;
+			document.getElementById("target").style.backgroundColor = strColor;
+		}
+		
+		function changeBorder(obj, flag) {
+			if(flag){
+				obj.style.border = "5px solid salmon";
+			} else {
+				obj.style.border = "1px dotted lightsalmon";
+			}
+		}
+
+	</script>
+</head>
+<body onload="init()"> 
+	<button type="button" id="btn1" onclick="proc1()">버튼1</button>
+	<button type="button" id="btn2" >버튼2</button>
+	<button type="button" id="btn3" >버튼3</button>
+	
+	<hr>
+	
+	<div id="target" onmouseover="changeBorder(this, 1)" onmouseout="changeBorder(this, 0)">
+		<input type="radio" name="color" id="blue" onclick="changeBgColor('lightblue')"> 
+		<label for="blue">파랑</label> 
+		<input type="radio" name="color" id="green" onclick="changeBgColor('lightgreen')"> 
+		<label for="green">초록</label> 
+	</div>
+</body>
+</html>

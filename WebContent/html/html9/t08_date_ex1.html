@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Date</title>
+	<script type="text/javascript">
+		
+		function proc(n) {
+			var curDate = "";
+			if(n == 1){
+				curDate = new Date(); // Date 객체
+				document.getElementById("spCurrentTime").innerHTML = curDate;
+			} else if (n == 2) {
+				// 7일 뒤 
+				curDate = new Date(); // Date 객체
+				console.log(curDate.getTime()); // 현재 시간을 milisec으로 리턴 (1620783791002)
+				
+				var addTime = 7 * 24 * 60 * 60 * 1000; // 7일을 밀리세컨드로 만든다. 
+				var afterTime = curDate.getTime() + addTime;
+				
+				document.getElementById("spAfter").innerHTML = new Date(afterTime); 
+			} 
+		}
+		
+		function checkDate() {
+			var buyDate = new Date(document.getElementById("buyDate").value);	// 구매 날짜
+			console.log(buyDate);
+			console.log("구입일자 date : " + new Date(buyDate));
+			
+			var curTime = new Date().getTime() - buyDate.getTime(); // 오늘 - 구매 날짜 = 몇 밀리세컨드 지났는지?
+			console.log("걸린 시간 : " + new Date(buyDate));
+			
+			var result = curTime/1000/60/60/24;
+			console.log(result); // 6.1055368055555554
+			console.log(Math.floor(result)); // 6
+					
+			if (Math.floor(result) >= 7) {
+				alert("교환 기간이지났습니다. 교환 기간은 7일 입니다.");
+			} else {
+				alert("교환가능합니다.");
+			}
+			
+		}
+	
+	</script>
+</head>
+<body>
+	<p>현재 시간은 [<span id="spCurrentTime"></span>]입니다.</p>
+	<button type="button" onclick="proc(1)">실행</button>
+	
+	<hr>
+	
+	<p>7일 후 시간은 [<span id="spAfter"></span>]입니다.</p>
+	<button type="button" onclick="proc(2)">실행</button>
+	
+	<hr> <br>
+
+	구입날짜 : <input type="date" id="buyDate">
+	<button type="button" onclick="checkDate()">검사</button>	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>브라우저색 바꾸기</title>
+	<script type="text/javascript">
+		function chage() {
+			setInterval(chColor, 1000);
+		}
+		function chColor() {
+			var r = parseInt(Math.random() * 256); 
+			var b = parseInt(Math.random() * 256); 
+			var g = parseInt(Math.random() * 256);
+			
+			document.getElementById("brs").style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+ 		}
+		function moveP() {
+			var url = "https://www.naver.com";
+			location.href = url; // 속성 변경하기
+// 			location.assign(url); // 메서드 사용하기 
+// 			location.replace(url); // 메서드 사용하기 
+		}
+	
+	</script>
+</head>
+<body id="brs">
+	<button type="button" onclick="chage()">색바꾸기</button>
+	
+	<button type="button" onclick="moveP()">페이지 이동</button>
+</body>
+</html>

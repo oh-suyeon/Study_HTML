@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>regular expression</title>
+	<style type="text/css">
+		div {
+			background-color: whitesmoke;
+			width: 500px;
+			padding: 10px;
+			line-height: 200%;
+		}
+	</style>
+	<script src="../../js/common/myUtils.js"></script>
+	<script type="text/javascript">
+		function insert() {
+			if(!validate()){
+				return;
+			}
+			
+			if(!confirm("저장하시겠습니까?")){
+				return;
+			}
+			
+			alert("저장되었습니다.");
+			reset();
+			
+		}
+		function validate() {
+			//ID 체크 (5~10 글자)
+			if(!checkValue("userId", "아이디")){
+				return false;
+			}
+			if(!checkRegExp("userId", "아이디", /^[a-z][a-z0-9]{4,9}$/)){
+				alert("빈 칸 없이 5~10 글자입니다. 영문 소문자로 시작합니다. 영문 소문자, 숫자 사용 가능합니다.");
+				return false;
+			}
+			if(!hasEmpty("userId", "아이디")){
+				return false;
+			}
+			
+			//비밀번호 체크 (8~20 글자)
+			if(!checkValue("password", "비밀번호")){
+				return false;
+			}
+			
+			if(!passwordCheckReg()){
+				alert("빈 칸 없이 8~20 글자입니다. 영문 소문자, 대문자, 숫자, 특수문자가 반드시 1글자씩 포함되어야 합니다.");
+				return false;
+			}
+			
+			if(!hasEmpty("password", "비밀번호")){
+				return false;
+			}
+			
+			//이름 체크 (2~5 글자)
+			if(!checkValue("userName", "이름")){
+				return false;
+			}
+			if(!checkRegExp("userName", "이름", /^[가-힣]{2,5}$/)){
+				alert("빈 칸 없이 한글 2~5 글자입니다.");
+				return false;
+			}
+			if(!hasEmpty("userName", "이름")){
+				return false;
+			}
+			
+			//생년월일 체크 
+			if(!checkValue("birth", "생년월일")){
+				return false;
+			}
+			
+			//휴대폰번호 체크 
+			if(!checkValue("hp", "휴대폰 번호")){
+				return false;
+			}
+			if(!checkRegExp("hp", "휴대폰", /^\d{3}-\d{4}-\d{4}$/)){
+				alert("000-0000-0000 형식입니다.");
+				return false;
+			}
+			if(!hasEmpty("hp", "휴대폰 번호")){
+				return false;
+			}
+			
+			//이메일 체크
+			if(!checkValue("email", "이메일 주소")){
+				return false;
+			}
+			if(!checkRegExp("email", "이메일 주소", /^[0-9a-zA-Z]([-_/.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_/.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/)){
+				alert("'아이디@웹사이트 주소' 형식입니다.");
+				return false;
+			}
+			if(!hasEmpty("email", "이메일 주소")){
+				return false;
+			}
+			
+			return true;
+		}
+		
+		function passwordCheckReg() {
+			var val = document.getElementById("password").value;
+			var pattern1 = /[0-9]/;
+			var pattern2 = /[a-z]/;
+			var pattern3 = /[A-Z]/;
+			var pattern4 = /[`~!@\#$%^&*\(\)\-_\=\+\[\]|\\;:\/?\.\,\{\}]/;
+			if(!val.match(pattern1) || !val.match(pattern2) || !val.match(pattern3) || 
+			   !val.match(pattern4) || val.length < 8 || val.length > 20){
+				alert("입력하신  비밀번호는 올바르지 않은 형식입니다.");
+				document.getElementById("password").focus();
+				return false;
+			} 
+			return true;
+		}
+		
+		function reset() {
+			var inputs = document.getElementsByTagName("input");
+			for(var i=0; i<inputs.length; i++){
+				inputs[i].value = "";
+			}			
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<fieldset>
+			<legend>회원정보입력</legend>
+			아이디(5~10글자): <input type="text" id="userId">
+			<br>
+			비밀번호 : <input type="text" id="password">
+			<br>
+			이름 : <input type="text" id="userName">
+			<br>
+			생년월일 : <input type="date" id="birth">
+			<br>
+			휴대폰 : <input type="text" id="hp">
+			<br>
+			이메일 : <input type="text" id="email">
+			<br>
+			<button type="button" onclick="insert()">전송</button>
+			<button type="button" onclick="reset()">취소</button>
+		</fieldset>
+	</div>
+</body>
+</html>

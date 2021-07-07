@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Math</title>
+	<script type="text/javascript">
+		var comNumber = Math.floor(Math.random() * 10 + 1);
+		console.log(comNumber);
+		
+		var result = "";
+		
+		function guessNumber() {
+			var userNumber = 0;
+			
+			userNumber = parseInt(document.getElementById("number").value);
+			userNumber = parseInt(userNumber);
+			console.log(userNumber);
+			
+			if(!(userNumber > 0 && userNumber < 11)){
+				alert("올바른 값을 입력해주세요.");
+				reset();
+				return;
+			}
+			
+			if(userNumber == comNumber) {
+				result = userNumber + "! 정답입니다."
+			} else {
+				if(userNumber > comNumber){
+					result = userNumber + "보다 작은 숫자입니다."
+				} else {
+					result = userNumber + "보다 큰 숫자입니다."
+				} 
+			}
+			reset();
+			document.getElementById("number").placeholder = result;
+		}
+		
+		function rspGame() {
+			
+			var hands = ["가위", "바위", "보"];
+			
+			var userHand = prompt(" '가위', '바위', '보'를 입력하세요.");
+			var userInx = hands.indexOf(userHand);
+			
+			var comInx = parseInt(Math.random() * 3); 
+			var comHand = hands[comInx];
+
+			if(userInx == -1){
+				alert("올바른 값이 아닙니다.");
+				return;
+			}
+			
+			if (userInx == comInx) {
+				result = "비겼습니다.";
+			} else if (userInx > comInx) { 
+				if(userInx == 0 && comInx == 2){
+					result = "컴퓨터 승!";
+				} else {
+					result = "사람 승!";
+				}	
+			} else {
+				if(userInx == 2 && comInx == 0){
+					result = "사람 승!";
+				} else {
+					result = "컴퓨터 승!";
+				}
+			}
+			
+			result = result + " [당신 : " + userHand + " / 컴퓨터 : " + comHand + "]";
+			alert(result);
+		}
+		
+		function lotto() {
+			var lot = [];
+			while(lot.length < 6){
+				var rn = parseInt(Math.random() * 45 + 1);
+				if(lot.indexOf(rn) == -1){
+					lot.push(rn);
+				}
+			}
+			lot.sort(function(a, b) {
+				return a - b;
+			})
+			document.getElementById("lottoNums").innerHTML = lot;
+		}
+		
+		function reset() {
+			document.getElementById("number").value = "";
+		}
+		
+	</script>
+</head>
+<body>
+	<h3>숫자 맞추기</h3>
+	<p>1부터 10사이의 숫자를 입력하세요.</p>
+	<input type="text" id="number" placeholder="">
+	<button type="button" onclick="guessNumber()">입력</button>
+	
+	<hr>
+		
+	<h3>가위 바위 보</h3>
+	<button type="button" onclick="rspGame()">실행</button>
+	
+	<hr>
+		
+	<h3>로또 번호 생성</h3>
+	<button type="button" onclick="lotto()">실행</button>
+	<div id="lottoNums"></div>
+		
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style type="text/css">
+		table, th, td {
+			border: dashed 1px black;
+			border-collapse: collapse;
+		}
+		table th, td {
+			padding: 10px 30px;			
+		}
+		table {
+			width: 100%;
+		}
+		table caption {
+			caption-side: top;
+			border: dotted 1px lightblue;
+		}
+		table tr:nth-child(2n + 1) {
+			background-color: lightyellow;
+		}
+		table th {
+			background-color: aliceblue;
+		}
+		table tr td:nth-child(1) {
+			text-align: center;
+			color: brown;
+		}
+		table tr td:nth-child(2) {
+			text-decoration: underline;
+		}
+		
+	</style>
+</head>
+<body>
+	<table>
+		<caption>테이블</caption>
+		<tr>
+			<th>이름</th>
+			<th>이메일</th>
+		</tr>
+		<tr>
+			<td>김철수</td>
+			<td>dhul@google.com</td>
+		</tr>
+		<tr>
+			<td>김영희</td>
+			<td>yount@google.com</td>
+		</tr>
+		<tr>
+			<td>김철수</td>
+			<td>dhul@google.com</td>
+		</tr>
+		<tr>
+			<td>김영희</td>
+			<td>yount@google.com</td>
+		</tr>
+		<tr>
+			<td>김철수</td>
+			<td>dhul@google.com</td>
+		</tr>
+		<tr>
+			<td>김영희</td>
+			<td>yount@google.com</td>
+		</tr>
+	</table>	
+</body>
+</html>

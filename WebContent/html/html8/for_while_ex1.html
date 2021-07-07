@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>for_while</title>
+</head>
+
+<body>
+	<p>(1). 1부터 10까지의 합 구하기</p>
+	<button type="button" onclick="getSum(1)">실행</button>
+	<p id="answer1"></p>
+	
+	<hr>
+	
+	<p>(2). 1부터 200까지의 짝수 합 구하기</p>
+	<button type="button" onclick="getSum(0)">실행</button>
+	<p id="answer2"></p>
+</body>
+
+	<script type="text/javascript">
+		function getSum(input) {
+			var sum = 0;
+			if (input) {
+				for(var i = 0; i < 10; i++){
+					sum += (i + 1);
+				}
+				document.getElementById("answer1").innerHTML = sum;
+			} else {
+				for(var i = 0; i < 200; i++){
+					if((i + 1) % 2) {
+						continue;
+					}
+					sum += (i + 1);
+				}
+				document.getElementById("answer2").innerHTML = sum;				
+			}
+		}
+	</script>
+</html>

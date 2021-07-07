@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>요소 생성하기</title>
+	<script type="text/javascript">
+		function addText() {
+			var msg = "무궁화 꽃이 피었습니다.";
+			var node = document.createTextNode(msg);
+			
+			var ele = document.createElement("br");
+			document.getElementById("target").appendChild(ele);
+
+			document.getElementById("target").appendChild(node);
+
+			var eleImg = document.createElement("img"); // <img>
+			// <img src="~">
+			eleImg.src = "../../images/tiger.jpg"
+			eleImg.height = "50";
+			document.getElementById("target").appendChild(eleImg);
+		}
+	</script>
+	<style type="text/css">
+		div {
+			border: solid 1px silver;
+			width : 400px;
+			line-height: 80px;
+			padding: 10px;
+			text-align: center;
+				
+		}
+	</style>
+</head>
+<body>
+	<div id="target" onclick="addText()">
+		클릭하세요.
+	</div>
+</body>
+</html>

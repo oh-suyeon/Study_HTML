@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>축약된 for문</title>
+	<script type="text/javascript">
+		var myCar = {
+				make : "KIA",
+				model : "K8",
+				year : 2021
+		};
+		
+		document.write(myCar.make);
+		document.write("<br>");
+		document.write(myCar["make"] + " / ");
+		document.write(myCar["model"] + " / ");
+		document.write(myCar["year"]);
+		document.write("<br>");
+		
+		for(var x in myCar){
+			console.log(x);
+			document.write(myCar[x] + "<br>");
+		}
+		
+		document.write("<br>");
+		
+// 		for(var x of myCar){
+// 			console.log(x);
+// 			document.write(myCar[x] + "<br>");
+// 		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

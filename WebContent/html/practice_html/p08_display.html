@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>display</title>
+	<style type="text/css">
+		div {
+			background-color: skyblue;
+		}
+		p.pInl {
+			display: inline;	
+			background-color: yellow;
+		}
+		p.pInlb {
+			display: inline-block;
+			margin: 0px;
+			height: 50px;
+			width: 200px;
+			background-color: yellow;
+		}
+		p.pInlh {
+			display: none;	
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<h2>display: inline</h2>
+	<div>
+		본래 틀
+		<p class="pInl">[끼어든 단락]</p>
+		본래 틀
+	</div>
+	<h2>display: inline-block</h2>
+	<div>
+		본래 틀
+		<p class="pInlb">[끼어든 단락]</p>
+		본래 틀
+	</div>
+	<h2>display: none</h2>
+	<div>
+		본래 틀
+		<p class="pInlh">[끼어든 단락]</p>
+		본래 틀
+	</div>
+</body>
+</html>

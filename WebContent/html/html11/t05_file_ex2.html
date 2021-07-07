@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>file</title>
+	<style type="text/css">
+		body, h3{
+			margin: 0px;
+		}
+		div#div0,#div1,#div2 {
+			background-color: lightgray;
+			padding: 10px 5px;
+			margin-bottom: 10px;
+		}
+		div#result2 {
+			padding: 10px 5px;
+			background-color: white;
+			border: dotted orange 5px;
+		}
+		div#resultImg {
+			text-align: center;
+		}
+		
+	</style>
+	<script type="text/javascript">
+		function getFile() {
+			
+			// 이전에 띄운 이미지 삭제
+			if(document.getElementById("resultImg").children[0] != null){
+				document.getElementById("resultImg").children[0].remove();
+			}
+			
+			// 파일 읽기 시작
+			var fileList = document.getElementById("attachFile").files;
+			
+			if(fileList == null || fileList.length == 0){
+				alert("선택된 파일이 없습니다.")
+				return;
+			}
+			var file = fileList[0];
+			var reader = new FileReader();
+			
+			if(file.type.substr(0,5) == "image"){
+				reader.readAsDataURL(file);
+				var imgNode = document.createElement("img");
+				imgNode.src = "../../images/" + file.name;
+				imgNode.style.width = "300px";
+				reader.onload = function() {
+					document.getElementById("result1").value = reader.result;
+					document.getElementById("resultImg").appendChild(imgNode);
+				}
+			} else {
+				reader.readAsText(file);
+				reader.onload = function(){
+					document.getElementById("result1").value = reader.result;
+				}
+			}
+			
+			// 파일 정보 표시
+			var str = "파일명 : "  + file.name +  
+					   "<br>파일크기 : " + file.size +
+					   "<br>파일종류 : " + file.type + 
+					   "<br>변경날짜 : " + file.lastModifiedDate;
+			
+			document.getElementById("result2").innerHTML = str;
+		}
+	</script>
+</head>
+<body>
+	<div id="div0">
+		<input type="file" id="attachFile" name="attachFile">
+		<button type="button" onclick="getFile()">읽 기</button>
+	</div>
+	<div id="div1">
+		<h3>결과 출력 (FileReader 객체)</h3>
+		<p>이미지파일인 경우 DataURL 형식으로, 아닌 경우 Text 형식으로 </p>
+		<textarea id="result1" rows="10" cols="70"></textarea>
+	</div>
+	<div id="div2">
+		<h3>파일 정보 (File 객체)</h3>
+		<p>이미지파일인 경우 이미지가 표시, 아닌 경우 이미지가 표시되지 않음</p>
+		<div id="resultImg"></div>
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

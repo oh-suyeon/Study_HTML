@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>환불 가능 기간 검사</title>
+	<script type="text/javascript">
+		function proc() {
+			var input = document.getElementById("buyDate").value;
+			
+			var buyDate = new Date(input);
+			var toDate = new Date();
+			
+			console.log("날짜 >>" + buyDate);
+			console.log("날짜 >>" + toDate);
+			
+			buyDate = buyDate.setHours(0, 0, 0, 0); // setHours()--> 밀리세컨드로 변해버림
+			toDate = toDate.setHours(0, 0, 0, 0);
+			
+			console.log("setHours >>" + buyDate);
+			console.log("setHours >>" + toDate);
+			
+			var buyTime = toDate - buyDate; // getTime() 필요 없음
+			console.log("buyTime(ms) >>" + buyTime);
+			
+			buyTime = buyTime / 1000 / 60 / 60 / 24; // 날짜로 바꾸기
+			console.log("buyTime(date) >>" + buyTime);
+			
+			if(buyTime <= 7){
+				alert("환불 가능합니다.");
+			} else {
+				alert("환불 불가능합니다.");
+			}
+			
+			
+		}
+	</script>
+</head>
+<body>
+	구입날짜 : <input type="date" id="buyDate">
+	<button type="button" onclick="proc()">검사</button>
+</body>
+</html>

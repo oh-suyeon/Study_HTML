@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Object 생성자</title>
+	<script type="text/javascript">
+		function Car(model, speed) {
+			this.model = model;
+			this.speed = speed;
+			this.color = "white";
+			this.brake = function() {
+				this.speed -= 10;
+			}
+			this.accel = function() {
+				this.speed += 10;
+			}
+		}
+		var myCar = new Car("Morning", 200);
+		
+		myCar["model"];
+		myCar.model;
+		
+		document.write("모델, 속도 : " + myCar.model + ", " + myCar.speed);
+		document.write("<br><br>");
+		
+		function brake() {
+			myCar.brake();
+			document.getElementById("result").innerHTML = myCar.speed;
+		}
+		function accel() {
+			myCar.accel();
+			document.getElementById("result").innerHTML = myCar.speed;
+			myCar.turbo = true;
+			myCar.showModel = function(){ 
+						alert(this.model); 
+						}
+			myCar.showModel();
+
+			console.log("삭제 전 > " + myCar.turbo);
+			delete myCar.turbo;
+			console.log("삭제 후 > " + myCar.turbo);
+		}
+		
+	</script>
+</head>
+<body>
+	<button type="button" onclick="brake();">브레이크</button>
+	<button type="button" onclick="accel();">엑셀</button>
+	<p>자동차 속도 : <span id="result"></span></p>
+</body>
+</html>

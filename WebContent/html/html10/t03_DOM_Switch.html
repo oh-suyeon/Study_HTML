@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Switch</title>
+	<script type="text/javascript">
+		function changeSw() {
+			var imgUrl = document.getElementsByTagName("img")[0].src;
+			
+			if(imgUrl.indexOf("_off.png") > -1) {
+				imgUrl = imgUrl.replace("_off.png", "_on.png");
+			} else {
+				imgUrl = imgUrl.replace("_on.png", "_off.png");
+			}
+			document.getElementsByTagName("img")[0].src = imgUrl;
+		}
+		
+		function changeSw1(obj) {
+			console.log(obj); // <img>
+			console.log(obj.src); // <img>.src
+			
+			var arr = ["sw_off.png", "sw_on.png"];
+			
+			var strSrc = obj.src; 
+			
+			if(strSrc.indexOf(arr[0]) > -1){
+				strSrc = strSrc.replace(arr[0], arr[1]);
+			} else {
+				strSrc = strSrc.replace(arr[1], arr[0]);
+			}
+			
+			obj.src = strSrc;
+			
+		}
+	</script>
+</head>
+<body>
+	<img alt="스위치" src="../assignment/sw_off.png" onclick="changeSw()">
+	<hr>
+	<img alt="스위치1" src="../assignment/sw_off.png" onclick="changeSw1(this)"> 
+	<!-- 	this => <img>  -->
+</body>
+</html>

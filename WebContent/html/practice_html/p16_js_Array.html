@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>정렬 연습</title>
+	<script type="text/javascript">
+		var x = [1, 2, 3];
+		var y = [4, 5, 6];
+		var joined = x.concat(y);
+		
+		document.writeln(x);
+		document.write(joined);
+		
+		var fruits = ["apple", "banana", "grape"];
+		document.write("<br>");
+		document.write(fruits.indexOf("banana"));
+		
+		document.write("<br>");
+		var numbers = [1, 2, 3, 4, 5];
+		document.write("원본 : " + numbers + "<br>");
+		numbers.push(6);
+		document.write("push 6 : " + numbers + "<br>");
+		
+		document.write("pop의 반환값 : " + numbers.pop() + "<br>");
+		document.write("pop : " + numbers + "<br>");
+		
+		document.write("<br>");
+		numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+		document.write("원본 : " + numbers + "<br>");
+		var item = numbers.shift();
+		document.write("shift의 반환값 : " + item + "<br>");
+		document.write("shift : " + numbers + "<br>");
+		var item2 = numbers.unshift(1, 2, 3, 4);
+		document.write("unshift의 반환값 : " + item2 + "<br>");
+		document.write("unshift : " + numbers + "<br>");
+		
+		document.write("<br>");
+		var myArray = [10, 7, 89, 0, 11, 8];
+		document.write("원본 : " + myArray + "<br>");
+		myArray.sort();
+		document.write("기본 비교 연산 sort : " + myArray + "<br>");
+		myArray.sort(function(f, s) {
+			return f - s;
+		})
+		document.write("뺄셈 연산 sort : " + myArray + "<br>");
+		myArray.sort(function(f, s) {
+			return s - f;
+		})
+		document.write("뺄셈 연산 sort (내림차순) : " + myArray + "<br>");
+		// 문자열 내림차순
+		
+		function strReverse(a, b) {
+			if(a > b) return -1;
+			else if (b > a) return 1;
+			else return 0;
+		}
+		
+		myArray.sort(strReverse);
+		document.write("문자열 sort (내림차순) : " + myArray + "<br>");
+		
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

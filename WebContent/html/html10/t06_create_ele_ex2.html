@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>요소 생성하기</title>
+	<script type="text/javascript">
+		function popImg() {
+			var findLi = document.getElementsByTagName("li");
+			var findUl = document.getElementsByTagName("Ul");
+			
+			for(var i = 0; i < findUl[0].children.length; i++){
+				var imgNode = document.createElement("img");
+				var liName = findLi[i].firstChild.data;
+				imgNode.src = "../../images/" + liName + ".jpg";
+				imgNode.alt = liName;
+// 				imgNode.class = "circle"; // 방법 찾아보기
+				
+				document.getElementsByTagName("li")[i].appendChild(imgNode);
+			}
+		}
+	</script>
+	<style type="text/css">
+ 		img.circle { 
+ 			width: 80px; 
+  			height: 80px;  
+ 			border-radius: 70%; 
+ 			border : solid 2px lightblue; 
+ 		} 
+		button {
+			background-color: lightblue;
+			color: white;
+			border-radius: 40%;
+			border : none;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+		
+	</style>
+</head>
+<body>
+	<button type="button" onclick="popImg();">실행</button>
+	<ul>
+		<li>식품2</li>
+		<li>컴퓨터1</li>
+		<li>호랑이</li>
+		<li>cloud03</li>
+		<li>coffee1</li>
+	</ul>
+	
+</body>
+</html>

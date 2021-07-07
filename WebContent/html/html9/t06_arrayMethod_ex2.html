@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Array</title>
+	<script type="text/javascript">
+		var tmp = ["사과", "배", "감"];
+		document.write("원본 : " + tmp + "<br>");
+		document.write("원본 길이: " + tmp.length + "<br><br>");
+
+		
+		var pu = tmp.push("포도", "배", "수박");
+		document.write("push : " + tmp + "<br>");
+		document.write("push 리턴 값 (길이): " + pu + "<br><br>");
+		
+		var po = tmp.pop();
+		document.write("pop : " + tmp + "<br>");
+		document.write("pop 리턴 값 (삭제된 값): " + po + "<br><br>");
+		
+		var shi = tmp.shift();
+		document.write("shift : " + tmp + "<br>");
+		document.write("shift 리턴 값 (삭제된 값): " + shi + "<br><br>");
+		
+		var uns = tmp.unshift("바나나");
+		document.write("unshift : " + tmp + "<br>");
+		document.write("unshift 리턴 값 (길이): " + uns + "<br><br>");
+		
+		
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

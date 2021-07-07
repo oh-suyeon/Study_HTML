@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Location</title>
+	<script type="text/javascript">
+		function move(n) {
+			if(n == 1){
+				location.replace("https://www.google.com");
+			} else if(n == 2) {
+				location.assign("https://www.google.com");
+			} else {
+				location.href = "https://www.google.com";
+			}
+			
+		}
+	</script>	
+</head>
+<body>
+	<button type="button" onclick="move(1);">replace</button>
+	<button type="button" onclick="move(2);">assign</button>
+	<button type="button" onclick="move(3);">href</button>
+</body>
+</html>

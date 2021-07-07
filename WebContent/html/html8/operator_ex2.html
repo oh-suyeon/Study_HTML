@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JS Operator</title>
+</head>
+
+<body>
+	<p id="result">결과는</p>
+	
+</body>
+	<script type="text/javascript">
+		// 사용자로부터 값2개입려받아 합을 화면에 보여준다.
+
+		var value1 = prompt("정수만 입력", "정수");
+		var value2 = prompt("정수만 입력", "정수");
+		
+		var sum;
+		sum = parseInt(value1) + parseInt(value2);
+		
+		document.getElementById("result").innerHTML = "결과는 " + sum + "입니다.";
+	</script>
+</html>

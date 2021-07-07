@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>if while</title>
+	<script type="text/javascript">
+		//현재 시간 가지고 와서 영어로 인사하기 alert
+		
+		var currHour = new Date().getHours();
+		
+		var msg = "";
+		
+		if(currHour < 12){
+			msg = "Good morning!"
+		} else if (currHour < 18){
+			msg = "Good afternoon!"
+		} else {
+			msg = "Good evening!"
+		}
+// 		alert(msg);
+		document.write(msg);
+		document.write("<br>");
+		
+		//switch
+		var grade = prompt("학점을 입력", "A~F 사이 문자 입력");
+		
+		switch(grade) {
+		case "A" : document.write("참 잘했어요"); 
+					break;		
+		case "B" : document.write("잘했어요"); 
+					break;		
+		case "C" : document.write("조금 잘했어요"); 
+					break;		
+		case "D" : document.write("아주 조금 잘했어요"); 
+					break;		
+		case "F" : document.write("재수강하세요"); 
+					break;
+		default : alert("입력 값 오류 (입력값 : " + grade + " )");
+		}
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

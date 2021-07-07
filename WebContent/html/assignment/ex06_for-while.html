@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>for_while</title>
+	<style type="text/css">
+		div {
+			width: 300px;
+			height: 40px;
+			border: solid 1px;
+		}
+	</style>
+</head>
+<body>
+		<h3>ex1. 1부터 10까지의 합 구하기</h3>
+		<div id="answer1">실행 결과</div> <br>
+		<button type="button" onclick="calc(1)">실행</button>
+		<button type="button" onclick="reset(1)">초기화</button>
+		
+		<hr color= "lightblue">
+		
+		<h3>ex2. 1부터 200까지의 짝수 합 구하기</h3>
+		<div id="answer2">실행 결과</div> <br>
+		<button type="button" onclick="calc(2)">실행</button>
+		<button type="button" onclick="reset(2)">초기화</button>
+		
+		<hr color= "lightblue">
+		
+		<h3>ex3. 입력한 값을 누적해 더하기</h3>
+		<div id="answer3">실행 결과</div> <br>
+		<button type="button" onclick="calc(3)">실행</button>
+		<button type="button" onclick="reset(3)">초기화</button>
+		
+		<hr color= "lightblue">
+	
+		<h3>ex4. 1~10 중 i와 k 더한 값이 3배수일 때만 출력하기 (다중for, continue)</h3>
+		<div id="answer4">실행 결과</div> <br>
+		<button type="button" onclick="calc(4)">실행</button> 
+		<button type="button" onclick="reset(4)">초기화</button>
+	
+		<hr color= "lightblue">
+		
+		
+		<h3>ex5. 1~100 중 2의배수면서 3의 배수인 숫자 출력</h3>
+		<div id="answer5">실행 결과</div> <br>
+		<button type="button" onclick="calc(5)">실행</button>
+		<button type="button" onclick="reset(5)">초기화</button>
+		
+		
+		<hr color= "lightblue">
+		
+		<h3>ex6. 입력된 두 수의 합이 100 이상일 때 출력, 두 수 모두 0이 입력되면 종료 (prompt, continue)</h3>
+		<div id="answer6">실행 결과</div> <br>
+		<button type="button" onclick="calc(6)">실행</button> 	
+		<button type="button" onclick="reset(6)">초기화</button>
+	
+		<hr color= "lightblue">
+		
+		<button type="button" onclick="reset(7)">전체 초기화</button>
+	
+</body>
+<script type="text/javascript">
+	function calc(n) {
+		if (n == 1) {
+			var sum = 0;
+			
+			for (var i = 0; i < 10; i++) {
+				sum += (i + 1);
+			}
+			document.getElementById("answer1").innerHTML = sum;
+			
+		} else if (n == 2) {
+			var sum = 0;
+			
+			for (var i = 0; i < 200; i++) {
+				if ((i + 1) % 2) {
+					continue;
+				}
+				sum += (i + 1);
+			}
+			document.getElementById("answer2").innerHTML = sum;
+			
+		} else if (n == 3) {
+			var sum = 0;
+			
+			while (num != 0) {
+				var num = prompt("값을 입력하세요", "0 입력 시 결과 출력");
+				sum += parseInt(num);
+			}
+			document.getElementById("answer3").innerHTML = sum;
+			
+		} else if (n == 4) {
+			var sum = "";
+			var temp = 0;
+			
+			for (var i = 1; i < 11; i++) {
+				
+				for (var k = 1; k < 11; k++) {
+					
+					if ((i + k) % 3 > 0 || (i + k) <= temp) {  // 다음 값과 크기를 비교해서 (자신의 값보다 작으면 이미 나온 값이라고 본다) 중복을 거른다.
+						continue;
+					}
+					temp = (i + k)		// 나온 값을 일시적으로 저장 
+					sum += temp + ", ";
+				}
+			}
+			document.getElementById("answer4").innerHTML = sum.slice(0,-2);
+			
+		} else if (n == 5) {
+			var sum = "";
+			
+			for (var i = 1; i < 101; i++) {
+				
+				if (i % 6 == 0) {
+					sum += i + ", ";
+				}
+			}
+			document.getElementById("answer5").innerHTML = sum.slice(0,-2);
+			
+		} else {
+			do {
+				var num1 = prompt("첫번째 수를 입력하세요", "두 숫자 모두 0 일시 종료");
+				var num2 = prompt("두번째 수를 입력하세요", "두 숫자 모두 0 일시 종료");
+				var sum = parseInt(num1) + parseInt(num2);
+				
+				if (sum < 100) {
+					continue;
+				}
+				alert("두 수의 합은 " + sum + "입니다");
+				document.getElementById("answer6").innerHTML = sum;
+			} while (num1 != 0 && num2 != 0); // while(sum)은 5 + (-5) 같은 경우 때문에 안 됨.
+		}
+	}
+	
+	function reset(n) {
+		if (n == 1){
+			document.getElementById("answer1").innerHTML = "실행 결과";
+		} else if (n == 2){
+			document.getElementById("answer2").innerHTML = "실행 결과";			
+		} else if (n == 3){
+			document.getElementById("answer3").innerHTML = "실행 결과";			
+		} else if (n == 4){
+			document.getElementById("answer4").innerHTML = "실행 결과";			
+		} else if (n == 5){
+			document.getElementById("answer5").innerHTML = "실행 결과";			
+		} else if (n == 6){
+			document.getElementById("answer6").innerHTML = "실행 결과";			
+		} else {
+			document.getElementById("answer1").innerHTML = "실행 결과";			
+			document.getElementById("answer2").innerHTML = "실행 결과";			
+			document.getElementById("answer3").innerHTML = "실행 결과";			
+			document.getElementById("answer4").innerHTML = "실행 결과";			
+			document.getElementById("answer5").innerHTML = "실행 결과";			
+			document.getElementById("answer6").innerHTML = "실행 결과";			
+		}
+	}
+</script>
+</html>

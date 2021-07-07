@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>array</title>
+	<style type="text/css">
+		div {
+			width: 400px;
+			height: 50px;
+			overflow: auto;
+			border: solid 1px silver;
+			background-color: aliceblue;
+		}
+	</style>
+</head>
+<body>
+
+	<h3>ex1. 이름 배열 출력</h3>
+	<button type="button" onclick="arr(1)">실행</button>
+	<button type="button" onclick="reset(1)">초기화</button> 
+	<br><br>
+	<div id="result1">결과 출력</div>
+	<br>
+	
+	<hr color="silver">
+	
+	<h3>ex2. 정수 배열 출력</h3>
+	<button type="button" onclick="arr(2)">실행</button>
+	<button type="button" onclick="reset(2)">초기화</button>
+	<br><br>
+	<div id="result2">결과 출력</div>
+	<br>
+	
+	<hr color="silver">
+	
+	<br>
+	<button type="button" onclick="reset(3)">전체 초기화</button>
+	
+</body>
+	<script type="text/javascript">
+	
+		// 깔끔하게 출력해주는 함수
+		function printArr(arr) {
+			var sum = "";
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i] != " " && arr[i] != null) {
+					sum += arr[i] + ", ";
+				}
+			}
+			sum = sum.slice(0, -2);
+			return sum;
+		}
+		
+		// 결과물을 만드는 함수 
+		function arr(n) {
+			if(n==1){
+				var names = [];
+				var nm = "";
+				
+				while(nm != " " && nm != null){	 
+					nm = prompt("이름을 입력하세요", "공백 입력, 취소 클릭 시 결과 출력");
+					names.push(nm);
+				}
+				
+				var result = printArr(names);
+				document.getElementById("result1").innerHTML = result;
+				
+			} else {
+				var numbers = [];
+				var result = "";
+				
+				while(numbers.length < 5){
+					var num = prompt("중복되지 않는 정수를 입력하세요. 현재 입력 값 : [" + result + "]");
+					
+					if(num == null){	// 취소가 입력되면 빠져나간다. 
+						break;
+					}
+					
+					if(numbers.indexOf(num) == -1){
+						numbers.push(num);
+					}
+					result = printArr(numbers);
+				}
+				
+				if(numbers.length < 5){
+					return;	// 취소가 입력된 경우 종료된다. 					
+				} else {
+					document.getElementById("result2").innerHTML = result;
+				}
+			}
+		}
+		
+		// 초기화 함수
+		function reset(n) {
+			if(n==1){
+				document.getElementById("result1").innerHTML = "실행결과";
+			} else if(n==2){
+				document.getElementById("result2").innerHTML = "실행결과";
+			} else {
+				document.getElementById("result1").innerHTML = "실행결과";
+				document.getElementById("result2").innerHTML = "실행결과";
+			}
+		}
+	</script>
+</html>

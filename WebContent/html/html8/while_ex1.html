@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>while</title>
+	<script type="text/javascript">
+		var i = 0;
+		while(i < 10){
+			document.write("카운터 : " + i + "<br>");	
+			i++;
+		}
+
+		document.write("<hr>");	
+		
+		i = 0;
+		var flag = true;
+		while(flag){
+			document.write("카운터 : " + i + "<br>");	
+			i++;
+			
+			if(i == 10) {
+				flag = false;
+			}
+		}
+		
+		document.write("<hr>");
+		
+		i = 0;
+		do {
+			document.write("카운터 : " + i + "<br>");	
+			i++;
+		} while(i < 10);
+		
+		document.write("<hr>");
+		
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

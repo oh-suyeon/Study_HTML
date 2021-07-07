@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var myCar = {
+				model : "GV70"
+				,year : 2021
+				,color : "blue"
+				,speed : 0 
+				,brake : function(){	// 액션도 넣을 수 있다. 호출하면 속도가 준다. 
+							this.speed -= 10;	// this == myCar
+						 }
+				,accel : function(){
+							this.speed += 10;
+						 }
+		};
+		
+		// 속성값 호출, 수정
+		document.write(myCar.year);
+		document.write("<br>");
+		myCar.year = 1999;
+		document.write(myCar.year);
+		document.write("<br>");
+		
+		// 액션, 즉 함수를 호출. ()를 달아준다. 
+		document.write("속도 : " + myCar.speed);
+		document.write("<br>");
+		document.write("엑셀 호출");
+		document.write("<br>");
+		myCar.accel(); 
+		document.write("속도 : " + myCar.speed);
+		document.write("<br>");
+
+		document.write("브레이크 호출");
+		document.write("<br>");
+		myCar.brake(); 
+		document.write("속도 : " + myCar.speed);
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

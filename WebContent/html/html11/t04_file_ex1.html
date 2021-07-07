@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FILE 요소 사용하기</title>
+	<script type="text/javascript">
+		function getFileInfo() {
+			var obj = document.getElementById("attachFile"); 
+			var fileList = obj.files; // 배열로 나온다.
+			
+			if(fileList == null || fileList.length <= 0){
+				alert("선택된 파일이 없습니다.");
+				return;
+			}
+			
+			var str = "";
+			
+			for(var i=0; i<fileList.length; i++){
+				var file = fileList[i];
+				str += "변경일시 : " + file.lastModifiedDate + 
+					   "\n파일 명 : "  + file.name + 
+					   "\n파일 크기 : " + file.size +
+					   "\n파일 유형 : " + file.type + "\n\n";
+			}
+			
+			document.getElementById("result1").value = str;
+		}
+		
+		function readFile() {
+			var fileList = document.getElementById("attachFile").files;
+			
+			if(fileList == null || fileList.length <= 0){
+				alert("선택된 파일이 없습니다.");
+				return;
+			}
+			
+			for(var i=0; i<fileList.length; i++){
+				var file = fileList[i];
+				var reader = new FileReader();
+				reader.readAsDataURL(file); // 일단 텍스트로 해석해보고 result에 세팅해 보기
+				reader.onload = function() {
+					document.getElementById("result2").value = reader.result;	
+				};
+			}
+		}
+	</script>
+	<style type="text/css">
+		div {
+			border: solid 1px;
+			width: 90%;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<input type="file" id="attachFile" name="attachFile" multiple="multiple">
+	<br><br>
+	<button type="button" onclick="getFileInfo()">파일 정보</button>
+	<button type="button" onclick="readFile()">파일 읽기</button>
+	<br><br>
+	<textarea rows="10" cols="65" id="result1"></textarea>
+	<textarea rows="10" cols="65" id="result2"></textarea>
+</body>
+</html>

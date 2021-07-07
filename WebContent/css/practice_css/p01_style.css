@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+	line-height: 180%;
+}
+div {
+	width: 320px;
+	border: blue 3px solid;
+	padding: 30px;
+}

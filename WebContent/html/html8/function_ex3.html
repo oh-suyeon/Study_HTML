@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>function</title>
+	<style type="text/css">
+		textarea {
+			background-color: yellow;
+			border: solid red 1px;
+		}
+	</style>
+</head>
+<body>
+	<button id="start" type="button" onclick="randomN()">시작</button>
+	<hr color="blue">
+	<h1>출력위치</h1>
+	<textarea id="print" rows="10" cols=""></textarea>
+	
+	<hr>
+	
+	<button type="button" onclick="closeWindow()">창닫기</button>
+</body>
+	<script type="text/javascript">
+		function randomN() {
+			var row = "";
+			for(var i = 0; i < 5; i++) {				
+				var rn = parseInt(Math.random() * 10);				
+				if(i != 4){
+					row += (rn + ", ");
+				} else {
+					row += (rn + "\n");
+				}
+			}
+			document.getElementById("print").value += row; 
+		}
+		
+		function closeWindow() {
+			var result = confirm("현재 창 닫을까요?");
+			console.log(result);
+			if(result) {
+				alert("창을 어떻게 닫지???");
+			}
+			if(!confirm("저장시겠습니까?")) {
+				return;
+			}
+			alert("저장되었습니다.");
+		}
+	</script>
+</html>

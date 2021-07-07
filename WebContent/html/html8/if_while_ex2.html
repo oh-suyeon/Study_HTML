@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>If Cal</title>
+	<script type="text/javascript">
+		
+		var n1 = "";
+		var n2 = "";
+		
+		while(true){
+			n1 = prompt("첫번째 숫자를 입력하세요.");
+			
+			if(n1 == "") {
+				n1 = alert("빈 값입니다.");
+			} else {
+				break;
+			}
+		}
+		
+		var oper = prompt("연산자를 입력하세요 (+, -, *, /, % 중 하나)");
+		
+		while(true){
+			n2 = prompt("두번째 숫자를 입력하세요.");
+			
+			if(n2 == "") {
+				n2 = prompt("빈 값입니다.", "첫번째 숫자를 입력하세요.");
+			} else {
+				break;
+			}
+		}
+		
+		var answer = n1 + oper + n2 + "=";
+		
+// 		switch(oper) {
+// 		case "+": answer += (parseInt(n1) + parseInt(n2)); 
+// 					break;
+// 		case "-": answer += (parseInt(n1) - parseInt(n2)); 
+// 					break;
+// 		case "*": answer += (parseInt(n1) * parseInt(n2)); 
+// 					break;
+// 		case "/": answer += (parseInt(n1) / parseInt(n2)); 
+// 					break;
+// 		case "%": answer += (parseInt(n1) % parseInt(n2)); 
+// 					break;
+// 		default : answer = "잘못된 입력값입니다. 입력값(" + n1 + "/" + oper + "/" + n2 + ")";
+// 					break; 
+// 		}
+		
+		if(oper == "+"){
+			answer += (parseInt(n1) + parseInt(n2)); 
+		} else if (oper == "-") {
+			answer += (parseInt(n1) - parseInt(n2));
+		} else if (oper == "*") {
+			answer += (parseInt(n1) * parseInt(n2)); 
+		} else if (oper == "/") {
+			answer += (parseInt(n1) / parseInt(n2)); 
+		} else if (oper == "%") {
+			answer += (parseInt(n1) % parseInt(n2));
+		} else {
+			answer = "잘못된 입력값입니다. 입력값(" + n1 + "/" + oper + "/" + n2 + ")";
+		}
+			
+		document.write(answer);
+		
+	</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>String</title>
+	<script type="text/javascript">
+		var flag = true;
+		
+		function inspec(num) {
+			num = num.replace("-", "");
+			var ins = 0;
+
+			for(var i = 0; i < 12; i++){
+				if(i < 8){
+					ins += (parseInt(num.charAt(i)) * (i + 2));
+				} else {
+					ins += (parseInt(num.charAt(i)) * (i - 6)); 
+				}
+			}
+
+			ins %= 11;
+			ins = 11 - ins;
+
+			if(ins == 10){
+				ins = 0;
+			} else if(ins == 11){
+				ins = 1;
+			}
+			console.log(ins);
+			if(ins != parseInt(num.charAt(12))){
+				alert("주민등록번호 형식에 맞지 않습니다.");
+				flag = false;
+			}
+		}
+		
+		function proc() {
+			var num = document.getElementById("input").value;
+			
+			flag = true;
+			
+			inspec(num);
+			if(!flag){
+				reset();
+				return;
+			}
+			
+			//성별
+			var gen = num.substr(7, 1);
+			if(parseInt(gen) % 2){
+				gen = "남자";
+			} else {
+				gen = "여자";
+			}
+			
+			//생일
+			var bir = num.substr(0, 6);
+			var temp = bir.substr(0, 2) + "년 " + parseInt(bir.substr(2, 2)) + "월 " + parseInt(bir.substr(4, 2)) + "일"
+			
+			if(parseInt(gen) > 2){
+				bir = 20 + temp;
+			} else {
+				bir = 19 + temp; 				 
+			}
+			
+			//나이 (만)
+			var birDate = bir.substr(0, 4) + "-" + num.substr(2, 2) + "-" + num.substr(4, 2);
+			birDate = new Date(birDate).setHours(0, 0, 0, 0); 
+			var today = new Date().setHours(0, 0, 0, 0);
+			var age = Math.floor((today - birDate) / 1000 / 60 / 60 / 24 / 365); // 정수 부분 --> 만 나이
+			
+			//나이 (한국)
+			var birYear = bir.substr(0, 4);
+			var toYear = new Date().getFullYear();
+			var age2 = toYear - birYear + 1; 
+			
+			document.getElementById("birthDay").innerHTML = bir;
+			document.getElementById("gender").innerHTML = gen;
+			document.getElementById("ages").innerHTML = age;
+			document.getElementById("ages2").innerHTML = age2;
+		}
+		
+		function reset() {
+			document.getElementById("input").value = "";
+			document.getElementById("birthDay").innerHTML = "";
+			document.getElementById("gender").innerHTML = "";
+			document.getElementById("ages").innerHTML = "";
+			document.getElementById("ages2").innerHTML = "";
+		}
+	
+	</script>
+	<style type="text/css">
+		div {
+			border: solid silver 1px;
+			background-color: aliceBlue;
+			width : 175px;
+			height : 20px;
+			font-size: 0.8em;
+			margin: 10px 0px;
+		}
+	</style>
+</head>
+<body>
+	<h2>주민등록번호를 입력하세요.</h2>
+	<input type="text" id="input">
+	<button type="button" onclick="proc()">입력</button>	
+	<button type="button" onclick="reset()">초기화</button>	
+	<div>생일 : <span id="birthDay"></span></div>
+	<div>성별 : <span id="gender"></span></div>
+	<div>만나이 : <span id="ages"></span></div>
+	<div>나이 : <span id="ages2"></span></div>
+	
+	
+</body>
+</html>

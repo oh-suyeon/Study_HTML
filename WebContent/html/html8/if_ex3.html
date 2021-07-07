@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가위 바위 보</title>
+	<script type="text/javascript">
+		
+		var arr = ["가위", "바위", "보"];
+
+		var player1 = "";
+		var player2 = "";
+		var result = "";
+		
+		var player1Idx = ""; 
+		var player2Idx = "";
+		
+		do {
+			player1 = prompt("첫번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보")
+			player1Idx = arr.indexOf(player1);
+		} while (arr.indexOf(player1) < 0)
+
+		do {
+			player2 = prompt("두번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보")
+			player2Idx = arr.indexOf(player2);
+		} while (arr.indexOf(player2) < 0)
+			
+
+		if (player1Idx == player2Idx) {
+			result = "비겼습니다.";
+		} else if (player1Idx > player2Idx) { // 0, 2 / 1, 0, / 2, 1
+			if(player1Idx == 0 && player2Idx == 2){
+				result = "두번째 사람 승!!!";
+			} else {
+				result = "첫번째 사람 승!!!";
+			}	
+		} else {
+			if(player1Idx == 2 && player2Idx == 0){
+				result = "첫번째 사람 승!!!";
+			} else {
+				result = "두번째 사람 승!!!";
+			}
+		}
+		
+		document.write("첫번째 사람 : " + player1 + "<br>");
+		document.write("두번째 사람 : " + player2 + "<br>");
+		document.write("<br> 결과 : " + result);
+	</script>
+</head>
+<body>
+	
+</body>
+
+</html>

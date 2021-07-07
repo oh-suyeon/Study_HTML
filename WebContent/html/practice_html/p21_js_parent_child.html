@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>부모자식</title>
+	<script type="text/javascript">
+		function proc() {
+			var list = document.getElementsByTagName('ul')[0];
+			var allItems = list.getElementsByTagName('li');
+			
+			for(var i = 0; i < allItems.length; i++){
+				alert(allItems[i].firstChild.data);
+			}
+		}
+		
+		function addtext(t) {
+			var node = document.createTextNode(t);
+			var node2 = document.createElement("br");
+			document.getElementById("target").appendChild(node2);
+			document.getElementById("target").appendChild(node);
+		}
+		
+		function removeNode() {
+			var parentEle = document.getElementsByTagName("div")[1];
+			var childEle = document.getElementById("p2");
+			
+			parentEle.removeChild(childEle);
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>List item1</li>
+		<li>List item2</li>
+		<li>List item3</li>
+		<li>List item4</li>
+		<li>List item5</li>
+	</ul>
+	<button type="button" onclick="proc()">실행</button>
+	
+	<hr>
+	
+	<div id="target" style="font: 20px bold;" onclick="addtext('안녕.')">여기를 클릭하세요.</div>
+
+	<hr>
+	
+	<div>
+		<p>첫번째 단락</p>
+		<p id="p2">두번째 단락</p>
+	</div>
+	<button type="button" onclick="removeNode()">클릭</button>
+</body>
+</html>

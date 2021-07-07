@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>요소 삭제하기</title>
+	<script type="text/javascript">
+		function removeElement() {
+			var parentEle = document.getElementById("target");
+			var childEle = parentEle.children[1];
+			parentEle.removeChild(childEle);
+		}
+		function creRemEle(obj){
+			var parentDiv = document.getElementById("target2");
+			var childUl = parentDiv.getElementsByTagName("ul");
+			var childLi = childUl.getElementsByTagName("li");
+			
+			//이미지 생성
+			
+			var eleImg = document.createElement("img");
+			console.log(obj.firstChild);
+		
+			//이미지 삭제
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="target">
+		<p>첫번째 단락</p>
+		<p id="p2">두번째 단락</p>
+		<p>세번째 단락</p>
+		<p>네번째 단락</p>
+		<p>다섯번째 단락</p>
+	</div>
+	<button type="button" onclick="removeElement()">클릭</button>
+	
+	<hr>
+	
+	<div id="target2">
+		<ul>
+			<li title="computer.jpg" onclick="creRemEle(this);">컴퓨터1</li>
+			<li title="food.jpg" onclick="creRemEle(this);">식품2</li>
+			<li title="tiger.jpg" onclick="creRemEle(this);">호랑이</li>
+			<li title="cloud.jpg" onclick="creRemEle(this);">cloud03</li>
+			<li title="coffee1.jpg" onclick="creRemEle(this);">coffee1</li>
+		</ul>
+	</div>
+</body>
+</html>

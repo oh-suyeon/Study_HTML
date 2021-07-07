@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>String</title>
+	<script type="text/javascript">
+		var str = "우리나라 대한민국 좋은 나라";
+		document.write(str);
+		
+		function chage() {
+			var pStr = document.getElementById("pStr").innerHTML;
+			
+			pStr = pStr.trim();
+			
+			var pArr = pStr.split(",");
+			
+			var print = "";
+			for(var i=0; i<pArr.length; i++){
+				print += (i + 1) + " - " + pArr[i].toLowerCase() + "<br>"; 
+			}
+			
+			document.getElementById("result").innerHTML = print;
+		}
+		
+		function reset() {
+			document.getElementById("result").innerHTML = "";
+		}
+		
+	</script>
+	<style type="text/css">
+		div {
+			border: solid 1px silver;
+			width: 80px;
+			height: 150px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<hr>
+	
+	<p id="pStr"> One,Two,Three,Four,Five </p>
+	<button type="button" onclick="chage()">변환</button> 
+	<button type="button" onclick="reset()">초기화</button> 
+	
+	<br>
+	<br>
+	 
+	<div id="result">
+	</div>
+</body>
+</html>

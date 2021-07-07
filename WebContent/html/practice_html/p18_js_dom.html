@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>dom</title>
+</head>
+<body>
+	<p>This is a paragraph!</p>
+	<button type="button" onclick="fontChage();">Change!</button>
+</body>
+	<script type="text/javascript">
+		function fontChage() {
+			document.getElementsByTagName("p")[0].style.color = "red";
+			document.getElementsByTagName("p")[0].style.fontStyle = "italic";
+			document.getElementsByTagName("p")[0].style.fontFamily = "Century Schoolbooks";
+		}
+	</script>
+</html>
